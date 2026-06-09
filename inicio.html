@@ -1,26 +1,23 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
 
-{% block titulo %}
-Pagina inicial
-{% endblock %}
+<body class="tema-{{ tema }}">
+    <div class="card">
+        <h1>Cookies no Flask</h1>
+        <p>O tema escolhido ficará salvo no navegador.</p>
 
-{% block conteudo %}
+        <h2>Tema Atual: {{ tema }}</h2>
 
-<div class="card">
+        <div class="botoes">
+            <a href="{{ url_for('trocar_tema', escolha='claro') }}">
+                Tema Claro
+            </a>
 
-    <h1>Bem-vindo ao Sistema</h1>
+            <a href="{{ url_for('trocar_tema', escolha='escuro') }}">
+                Tema Escuro
+            </a>
+        </div>
+    </div>
+</body>
 
-    <p>
-     Esse site utiliza:
-    </p>
-
-    <ul>
-        <li>Navbar reutilizável</li>
-        <li>Rodapé reutilizável</li>
-        <li>Herança com extends</li>
-        <li>Blocos com block</li>
-    </ul>
-
-</div>
-
-{% endblock %}
+</html>
