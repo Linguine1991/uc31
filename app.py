@@ -1,16 +1,14 @@
-from werkzeug.security import generate_password_hash
-from werkzeug.security import check_password_hash
+from flask import Flask, render_template
+import json
 
-senha = input("digite uma senha: ")
+app = Flask(__name__)
 
-hash_senha = generate_password_hash(senha)
+@app.route("/")
+def produtos():
 
-print("\nHash gerado:")
-print(hash_senha)
+    with open("produtos.json", "r", encoding="utf-8") as arquivo:
+        lista_produtos = json.load(arquivo)
 
-tentativa = input("\nDigite novamente a senha: ")
+    return render_template("produtos.html", produtos=lista_produtos)
 
-if check_password_hash(hash_senha, tentativa):
-    print("senha correta!")
-else:
-    print("senha incorreta!")
+app.run(debug=True)
